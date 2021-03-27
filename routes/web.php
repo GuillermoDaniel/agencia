@@ -17,23 +17,22 @@ use App\Http\Controllers\PropiedadesController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+//funcional
 Route::get('/', function () {
-    $propiedades = Propiedad::orderBy('id', 'DESC')
-    ->paginate(5);
-    return view('template',
-    ['propiedades'=> $propiedades
-]);
+   // $propiedades = Propiedad::orderBy('id', 'DESC')->paginate(5);
+    return view('template');
+    //['propiedades'=> $propiedades
+//]);
     //$data = Categoria::all();
     //return response()->json($data);
 });
-
+//prueba
 Route::get('/crearpropiedad', [PropiedadesController::class, 'createPropiedad']);
-
+//prueba
 Route::get('/listapropiedades', [PropiedadesController::class, 'listPropiedades']);
-
+//funcional
 Route::get('/propiedad/{slug}', 
 [PropiedadesController::class,
  'detallePropiedad'])->name('detallepropiedad');
-
+//prueba
 Route::resource('/photos', PhotoController::class);

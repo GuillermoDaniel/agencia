@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Propiedad;
+use App\Categoria;
 
 class PropiedadesController extends Controller
 {
@@ -40,11 +41,17 @@ class PropiedadesController extends Controller
     }
     function detallePropiedad(Request $request, $slug){
         $propiedad = Propiedad::where('slug', $slug)->first();
-        if($propiedad){
-            $data = $propiedad;
-        }else{ 
+        
+        if(!$propiedad){
             return abort(404);
     }
-        return response()->json($data);
+    $categoria = Categoria::find($propiedad->categoria_id);
+    //$imagenes = ImagenesPropiedad::where('propiedad_id',
+    //$propiedad->id)->get();
+   //$caracteristicas = Caracteristicas::where('propiedad_id',
+    //$propiedad->id)->get();
+        //return response()->json($data);
+        return view('detalle', ['propiedad' => $propiedad,
+        'categoria'=>$categoria]);
     }
 }
