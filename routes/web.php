@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Categoria;
 use App\Propiedad;
 use App\Http\Controllers\PropiedadesController;
+//use App\Http\Controllers\PhotoController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -17,10 +19,21 @@ use App\Http\Controllers\PropiedadesController;
 */
 
 Route::get('/', function () {
-    //return view('welcome');
-    $data = Categoria::all();
-    return response()->json($data);
+    $propiedades = Propiedad::orderBy('id', 'DESC')
+    ->paginate(5);
+    return view('template',
+    ['propiedades'=> $propiedades
+]);
+    //$data = Categoria::all();
+    //return response()->json($data);
 });
 
 Route::get('/crearpropiedad', [PropiedadesController::class, 'createPropiedad']);
+
 Route::get('/listapropiedades', [PropiedadesController::class, 'listPropiedades']);
+
+Route::get('/propiedad/{slug}', 
+[PropiedadesController::class,
+ 'detallePropiedad'])->name('detallepropiedad');
+
+Route::resource('/photos', PhotoController::class);

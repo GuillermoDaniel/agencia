@@ -38,4 +38,13 @@ class PropiedadesController extends Controller
     $data = Propiedad::paginate(4);
     return response()->json($data);
     }
+    function detallePropiedad(Request $request, $slug){
+        $propiedad = Propiedad::where('slug', $slug)->first();
+        if($propiedad){
+            $data = $propiedad;
+        }else{ 
+            return abort(404);
+    }
+        return response()->json($data);
+    }
 }

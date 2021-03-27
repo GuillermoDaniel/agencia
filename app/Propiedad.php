@@ -15,4 +15,7 @@ class Propiedad extends Model
             ]
         ];
     }
+
+    //Para cambiar el nombre de la tabla
+    //protected $table = 'propiedades'
 }
