@@ -24,8 +24,12 @@ class Propiedad extends Model
         return $this->belongsTo(Categoria::class);
     }
 
-    public function agente(){
+    /*public function agente(){
         return $this->hasOne(Agente::class);
+    }*/
+
+    public function agente(){
+        return $this->hasMany(Agente::class);
     }
 
     public function imagenes_propiedad(){

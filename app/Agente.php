@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Agente extends Model
 {
     //
-   /* public function propiedad(){
+    public function propiedad(){
         return $this->belongsTo(Propiedad::class);
     }
-    */
+    
 }

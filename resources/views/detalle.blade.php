@@ -53,12 +53,16 @@
             @if($propiedad->imagenes_propiedad->count()>0)
             @foreach($propiedad->imagenes_propiedad as $imagen)
               <div class="carousel-item-b">
-                <img src="{{URL::to('/')}}{{ $imagen->url_imagen}}" alt="">
+              @if($imagen->nombre_archivo=='')
+                <img src="{{URL::to('/')}}{{ $imagen->url_default}}" alt="">
+              @else
+              <img src="{{URL::to('/')}}{{ $imagen->url_imagen}}" alt="">
+              @endif
               </div>
               @endforeach
               @else
               <div class="carousel-item-b">
-                <img src="{{URL::to('/')}}/sinimagen.jpg" alt="">
+                <img src="{{URL::to('/')}}/images/imagen.png" alt="">
               </div>
               @endif
             </div>
@@ -182,6 +186,7 @@
               </div>
             </div>
           </div>
+          @if($propiedad->agente->last() != '')
           <div class="col-md-12">
             <div class="row section-t3">
               <div class="col-sm-12">
@@ -196,18 +201,18 @@
               </div>
               <div class="col-md-6 col-lg-4">
                 <div class="property-agent">
-                  <h4 class="title-agent">{{$propiedad->agente->nombre}}</h4>
+                  <h4 class="title-agent">{{$propiedad->agente->last()->nombre}}</h4>
                   <p class="color-text-a">
                   {{$propiedad->experiencia}}
                   </p>
                   <ul class="list-unstyled">
                     <li class="d-flex justify-content-between">
                       <strong>Phone:</strong>
-                      <span class="color-text-a">{{$propiedad->agente->telefono}}</span>
+                      <span class="color-text-a">{{$propiedad->agente->last()->telefono}}</span>
                     </li>
                     <li class="d-flex justify-content-between">
                       <strong>Email:</strong>
-                      <span class="color-text-a">{{$propiedad->agente->correo}}</span>
+                      <span class="color-text-a">{{$propiedad->agente->last()->correo}}</span>
                     </li>
                     <li class="d-flex justify-content-between">
                       <strong>Skype:</strong>
@@ -273,6 +278,7 @@
               </div>
             </div>
           </div>
+          @endif
         </div>
       </div>
     </section><!-- End Property Single-->
