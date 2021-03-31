@@ -11,6 +11,10 @@
 
 @section('content')    
     <!-- ======= Intro Single ======= -->
+
+    
+
+
     <section class="intro-single">
       <div class="container">
         <div class="row">
@@ -38,22 +42,25 @@
         </div>
       </div>
     </section><!-- End Intro Single-->
-
+    {{ $propiedad->categoria}}
+    
     <!-- ======= Property Single ======= -->
     <section class="property-single nav-arrow-b">
       <div class="container">
         <div class="row">
           <div class="col-sm-12">
             <div id="property-single-carousel" class="owl-carousel owl-arrow gallery-property">
+            @if($propiedad->imagenes_propiedad->count()>0)
+            @foreach($propiedad->imagenes_propiedad as $imagen)
               <div class="carousel-item-b">
-                <img src="{{ asset('assets/img/slide-2.jpg') }}" alt="">
+                <img src="{{URL::to('/')}}{{ $imagen->url_imagen}}" alt="">
               </div>
+              @endforeach
+              @else
               <div class="carousel-item-b">
-                <img src="{{ asset('assets/img/slide-3.jpg') }}" alt="">
+                <img src="{{URL::to('/')}}/sinimagen.jpg" alt="">
               </div>
-              <div class="carousel-item-b">
-                <img src="{{ asset('assets/img/slide-1.jpg') }}" alt="">
-              </div>
+              @endif
             </div>
             <div class="row justify-content-between">
               <div class="col-md-5 col-lg-4">
@@ -63,7 +70,7 @@
                       <span class="ion-money">$</span>
                     </div>
                     <div class="card-title-c align-self-center">
-                      <h5 class="title-c">{{ $propiedad->precio}}</h5>
+                      <h5 class="title-c">{{ $propiedad->precio_formato}}</h5>
                     </div>
                   </div>
                 </div>
@@ -87,7 +94,7 @@
                       </li>
                       <li class="d-flex justify-content-between">
                         <strong>Property Type:</strong>
-                        <span>{{ $categoria->nombre_categoria}}</span>
+                        <span>{{ $propiedad->categoria->nombre_categoria}}</span>
                       </li>
                       <li class="d-flex justify-content-between">
                         <strong>Status:</strong>
@@ -189,24 +196,18 @@
               </div>
               <div class="col-md-6 col-lg-4">
                 <div class="property-agent">
-                  <h4 class="title-agent">Anabella Geller</h4>
+                  <h4 class="title-agent">{{$propiedad->agente->nombre}}</h4>
                   <p class="color-text-a">
-                    Nulla porttitor accumsan tincidunt. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet
-                    dui. Quisque velit nisi,
-                    pretium ut lacinia in, elementum id enim.
+                  {{$propiedad->experiencia}}
                   </p>
                   <ul class="list-unstyled">
                     <li class="d-flex justify-content-between">
                       <strong>Phone:</strong>
-                      <span class="color-text-a">(222) 4568932</span>
-                    </li>
-                    <li class="d-flex justify-content-between">
-                      <strong>Mobile:</strong>
-                      <span class="color-text-a">777 287 378 737</span>
+                      <span class="color-text-a">{{$propiedad->agente->telefono}}</span>
                     </li>
                     <li class="d-flex justify-content-between">
                       <strong>Email:</strong>
-                      <span class="color-text-a">annabella@example.com</span>
+                      <span class="color-text-a">{{$propiedad->agente->correo}}</span>
                     </li>
                     <li class="d-flex justify-content-between">
                       <strong>Skype:</strong>

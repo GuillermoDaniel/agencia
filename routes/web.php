@@ -36,3 +36,8 @@ Route::get('/propiedad/{slug}',
  'detallePropiedad'])->name('detallepropiedad');
 //prueba
 Route::resource('/photos', PhotoController::class);
+
+Route::get('/api/propiedades', function(){
+    $propiedades = Propiedad::orderBy('id','DESC')->with('Categoria')->paginate(5);
+    return response()->json($propiedades);
+})->name('home');
