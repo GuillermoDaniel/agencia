@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Categoria;
 use App\Propiedad;
 use App\Http\Controllers\PropiedadesController;
+use App\Http\Controllers\ContactoController;
 //use App\Http\Controllers\PhotoController;
 
 
@@ -36,6 +37,13 @@ Route::get('/propiedad/{slug}',
  'detallePropiedad'])->name('detallepropiedad');
 //prueba
 Route::resource('/photos', PhotoController::class);
+
+Route::post('/guadar/contacto',  [ContactoController::class, 'saveContacto'])->name('save.contacto');
+
+
+Route::get('/propiedad/{slug}', 
+[PropiedadesController::class,
+ 'detallePropiedad'])->name('detallepropiedad');
 
 Route::get('/api/propiedades', function(){
     $propiedades = Propiedad::orderBy('id','DESC')->with('Categoria')->paginate(5);
