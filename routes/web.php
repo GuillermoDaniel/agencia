@@ -5,6 +5,8 @@ use App\Categoria;
 use App\Propiedad;
 use App\Http\Controllers\PropiedadesController;
 use App\Http\Controllers\ContactoController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\AgentesController;
 //use App\Http\Controllers\PhotoController;
 
 
@@ -49,3 +51,9 @@ Route::get('/api/propiedades', function(){
     $propiedades = Propiedad::orderBy('id','DESC')->with('Categoria')->paginate(5);
     return response()->json($propiedades);
 })->name('home');
+//administracion de las propiedades
+Route::prefix('admin')->group(function (){
+    Route::get('/', [UserController::class, 'index'])->name('login');
+    Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
+    Route::get('/agentes', [AgentesController::class, 'listaAgentes'])->name('lista.agentes');
+});
