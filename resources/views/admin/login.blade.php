@@ -8,18 +8,18 @@
     <title>Login inmobiliaria </title>
     <!-- plugins:css -->
 
-    <link rel="stylesheet" href="{{ asset('assets_admin/vendors/iconfonts/mdi/css/materialdesignicons.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets_admin/vendors/iconfonts/ionicons/dist/css/ionicons.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets_admin/vendors/iconfonts/flag-icon-css/css/flag-icon.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets_admin/vendors/css/vendor.bundle.base.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets_admin/vendors/css/vendor.bundle.addons.css') }}">
+    <link rel="stylesheet" href="{{asset('assets_admin/vendors/iconfonts/mdi/css/materialdesignicons.min.css')}}"/>
+    <link rel="stylesheet" href="{{asset('assets_admin/vendors/iconfonts/ionicons/dist/css/ionicons.css')}}">
+    <link rel="stylesheet" href="{{asset('assets_admin/vendors/iconfonts/flag-icon-css/css/flag-icon.min.css')}}"/>
+    <link rel="stylesheet" href="{{asset('assets_admin/vendors/css/vendor.bundle.base.css')}}"/>
+    <link rel="stylesheet" href="{{asset('assets_admin/vendors/css/vendor.bundle.addons.css')}}"/>
     <!-- endinject -->
     <!-- plugin css for this page -->
     <!-- End plugin css for this page -->
     <!-- inject:css -->
-    <link rel="stylesheet" href="{{ asset('assets_admin/assets/css/shared/style.css') }}"">
+    <link rel="stylesheet" href="{{asset('assets_admin/css/shared/style.css')}}"/>
     <!-- endinject -->
-    <link rel="shortcut icon" href="{{ asset('assets_admin/assets/images/favicon.ico') }}"" />
+    <link rel="shortcut icon" href="{{asset('assets_admin/images/favicon.ico')}}"/>
   </head>
   <body>
     <div class="container-scroller">
@@ -64,7 +64,7 @@
                   </div>
                   <div class="form-group">
                     <button class="btn btn-block g-login">
-                      <img class="mr-3" src="../../../assets/images/file-icons/icon-google.svg" alt="">Log in with Google</button>
+                      <img class="mr-3" src="{{ asset('assets_admin/images/file-icons/icon-google.svg') }}" alt="">Log in with Google</button>
                   </div>
                   <div class="text-block text-center my-3">
                     <span class="text-small font-weight-semibold">Not a member ?</span>
@@ -94,13 +94,13 @@
     </div>
     <!-- container-scroller -->
     <!-- plugins:js -->
-    <script src="{{ asset('assets_admin/vendors/js/vendor.bundle.base.js') }}""></script>
-    <script src="{{ asset('assets_admin/vendors/js/vendor.bundle.addons.js') }}""></script>
+    <script src="{{ asset('assets_admin/vendors/js/vendor.bundle.base.js') }}"></script>
+    <script src="{{ asset('assets_admin/vendors/js/vendor.bundle.addons.js') }}"></script>
     <!-- endinject -->
     <!-- inject:js -->
-    <script src="{{ asset('assets_admin/js/shared/off-canvas.js') }}""></script>
-    <script src="{{ asset('assets_admin/assets/js/shared/misc.js') }}""></script>
+    <script src="{{ asset('assets_admin/js/shared/off-canvas.js') }}"></script>
+    <script src="{{ asset('assets_admin/js/shared/misc.js') }}"></script>
     <!-- endinject -->
-    <script src="{{ asset('assets_admin/js/shared/jquery.cookie.js') }}"" type="text/javascript"></script>
+    <script src="{{ asset('assets_admin/js/shared/jquery.cookie.js') }}" type="text/javascript"></script>
   </body>
 </html>
